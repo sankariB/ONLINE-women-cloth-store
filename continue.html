@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title><style>
+	body{
+	background:grey;}
+	</style>
+</head>
+
+<body>
+<div>
+<nav class="navbar fixed-top bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" ><i class="fa-solid fa-gift" style="margin-right: 6%;"></i>KP Fashions</a>
+
+      <a href="#shopping-cart" style="color: mediumblue;">  <i style="margin-right: 1%;" class="fa-solid fa-cart-shopping justify-content-end fa-xl" ></i></a>
+
+    </div>
+  </nav>
+<center>
+    <h1>payment page</h1>
+	<!-- Inside the HTML body -->
+
+<p id="selected-size"></p>
+<p id="total-amount"></p>
+
+<!-- Rest of the "Continue" page content -->
+
+
+
+    <h2>Payment Options</h2>
+    <p>Select your payment method:</p>
+    <label>
+        <input type="radio" name="payment-method" value="credit-card"> Credit Card
+    </label>
+
+
+<button id="pay-button" onclick="redirectToUIPage()">Pay</button>
+
+<script>
+// Function to redirect to "ui.html" when the "Pay" button is clicked
+function redirectToUIPage() {
+  // Perform any necessary payment processing or validation here if needed
+
+  // Redirect to "ui.html"
+  window.location.href = "ui.html";
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const size = urlParams.get("size");
+  const totalAmount = urlParams.get("total");
+
+  if (size && totalAmount) {
+    // Display the selected size and total amount
+    document.getElementById("selected-size").textContent = `Selected Size: ${size}`;
+    document.getElementById("total-amount").textContent = `Total Amount: $${totalAmount}`;
+  } else {
+    // Handle the case where query parameters are missing
+    alert("Invalid URL parameters. Please go back and try again.");
+  }
+});
+</script>
+
+
+</body>
+</html>
